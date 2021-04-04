@@ -94,11 +94,11 @@ def shellsort(array):
     sublistcount = len(array) // 2
     while sublistcount > 0:
         for start_position in range(sublistcount):
-            gap_InsertionSort(array, start_position, sublistcount)
+            gapInsertionSort(array, start_position, sublistcount)
         sublistcount = sublistcount // 2
 
 
-def gap_InsertionSort(array, start, gap):
+def gapInsertionSort(array, start, gap):
     for i in range(start + gap, len(array), gap):
 
         current_value = array[i]
