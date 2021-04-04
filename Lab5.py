@@ -136,7 +136,7 @@ def heapify(arr, n, i):
 def heapsort(arr):
     n = len(arr)
 
-    # Build a maxheap.
+    # maxheap.
     for i in range(n // 2 - 1, -1, -1):
         heapify(arr, n, i)
 
