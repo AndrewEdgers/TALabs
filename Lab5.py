@@ -12,7 +12,7 @@ q1M = blessRNG1M.copy()
 m1M = blessRNG1M.copy()
 s1M = blessRNG1M.copy()
 h1M = blessRNG1M.copy()
-pogChamp100K = [x for x in range(0, 1000000)]
+pogChamp100K = [x for x in range(0, 100000)]
 q2K = pogChamp100K.copy()
 m2K = pogChamp100K.copy()
 s2K = pogChamp100K.copy()
@@ -23,7 +23,7 @@ m2M = pogChamp1M.copy()
 s2M = pogChamp1M.copy()
 h2M = pogChamp1M.copy()
 
-
+"""
 def partition(array, begin, end):
     pivot = begin
     for i in range(begin + 1, end + 1):
@@ -45,7 +45,29 @@ def quicksort(array, begin=0, end=None):
         _quicksort(array, begin, pivot - 1)
         _quicksort(array, pivot + 1, end)
 
-    return _quicksort(array, begin, end)
+    return _quicksort(array, begin, end)"""
+
+
+def choose_pivot(arr, lo, hi):
+    return arr[hi]
+
+
+def partition(arr, lo, hi, pivot):
+    i = lo
+    for j in range(lo, hi):
+        if arr[j] < pivot:
+            arr[i], arr[j] = arr[j], arr[i]
+            i = i + 1
+    arr[i], arr[hi] = arr[hi], arr[i]
+    return i
+
+
+def quicksort(arr, lo, hi):
+    if lo < hi:
+        pivot = choose_pivot(arr, lo, hi)
+        pos = partition(arr, lo, hi, pivot)
+        quicksort(arr, lo, pos - 1)
+        quicksort(arr, pos + 1, hi)
 
 
 def mergesort(arr):
@@ -68,7 +90,7 @@ def mergesort(arr):
 
         i = j = k = 0
 
-        # Copy data to temp arrays L[] and R[]
+        # Copy item to temp arrays L[] and R[]
         while i < len(L) and j < len(R):
             if L[i] < R[j]:
                 arr[k] = L[i]
@@ -133,6 +155,7 @@ def heapify(arr, n, i):
         # Heapify the root.
         heapify(arr, n, largest)
 
+
 def heapsort(arr):
     n = len(arr)
 
@@ -147,21 +170,21 @@ def heapsort(arr):
 
 
 def main():
-    start_time = time.time()
-    quicksort(q1K)
+    """start_time = time.time()
+    quicksort(q1K, 0, len(q1K) - 1)
     print("--- Quicksort 100K Random: %s seconds ---" % (time.time() - start_time))
 
     start_time = time.time()
-    quicksort(q1M)
+    quicksort(q1M, 0, len(q1M) - 1)
     print("--- Quicksort 1M Random: %s seconds ---" % (time.time() - start_time))
+"""
+    start_time = time.time()
+    quicksort(q2K, 0, len(q2K) - 1)
+    print("--- Quicksort 100K Sorted: %s seconds ---" % (time.time() - start_time))
 
-    # start_time = time.time()
-    # quicksort(q2K)
-    print("--- Quicksort 100K Sorted: None, maximum recursion depth exceeded ---")
-
-    # start_time = time.time()
-    # quicksort(q2M)
-    print("--- Quicksort 1M Sorted: None, maximum recursion depth exceeded ---")
+    start_time = time.time()
+    quicksort(q2M, 0, len(q2M) - 1)
+    print("--- Quicksort 1M Sorted: %s seconds ---" % (time.time() - start_time))
     print("---------------------------------------")
 
     start_time = time.time()
