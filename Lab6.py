@@ -133,7 +133,6 @@ class BinarySearchTree:
         else:
             return False
 
-
     def _search(self, value, cur_node):
         if value == cur_node.value:
             return True
@@ -143,14 +142,12 @@ class BinarySearchTree:
             return self._search(value, cur_node.right_child)
         return False
 
-
     def treeToArr(self):
         nodes = []
         if self.root is not None:
             self._treeToArr(self.root, nodes)
 
         return nodes
-
 
     def _treeToArr(self, cur_node, nodes):
         if cur_node is not None:
