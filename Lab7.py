@@ -1,9 +1,6 @@
 from random import randrange
 
 
-# Inserting a key on a B-tree in Python
-
-
 # Create a node
 class Node:
     def __init__(self, leaf=False):
@@ -221,7 +218,7 @@ def main():
     print("\n")
     BR.print_tree(BR.root)
 
+
 if __name__ == '__main__':
     main()
 
-# 8847 9847
